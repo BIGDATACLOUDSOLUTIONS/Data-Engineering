@@ -1,0 +1,64 @@
+If You have column containing 90% of rows containing same values, and if you try to join or group by on that column, one partition will
+get 90% of data, and it will get stuck as it has to process 90% of data. this issue is called data skew.
+
+Solution:
+
+DataBricks Solution:
+
+val skewedKeys = List("id","id200","id-99")
+
+df.join(skewDF.hint("SKEW","skewKey",skewedKeys),Seq(keyCol),"inner")
+
+Normal Spark soultion:
+
+df.groupBy("city","state").agg(f(x)).orderBy(col.desc)
+
+val saltVal = random(0,spark.conf.get() - 1)
+df.withColumn("salt",lit(saltVal)).
+groupBy("city","state","salt").agg(f(x)).drop("salt").orderBy(col.desc)
+
+SampleCode to test:
+
+Without Saulting:
+
+import scala.util.Random
+import scala.io._
+
+
+
+//Data Generation
+val random = new Random
+def getRandomProductID: String = {
+val year = 101 to 999999
+year(random.nextInt(year.length)).toString
+}
+
+val getRandomProductID_Udf=udf(getRandomProductID _)
+
+def getRandomCustID: String = {
+val custIDs = 100 to 1000
+custIDs(random.nextInt(custIDs.length)).toString
+}
+
+val getRandomCustID_UDF=udf(getRandomCustID _)
+
+def getRandomCustName = {
+val r = new scala.util.Random
+val a = new Array[Char](5)
+val sb = new StringBuilder
+for (i <- 0 to 4) {
+a(i) = r.nextPrintableChar
+}
+a.mkString
+}
+
+
+
+val getRandomCustName_UDF= udf(getRandomCustName _)
+import spark.implicits._
+
+val orders=spark.range(10e8.toLong).withColumnRenamed("id","order_id").withColumn("product_id",getRandomProductID_Udf()).withColumn("cust_id",getRandomCustID_UDF()).withColumn("cust_id", when($"cust_id" >150, 60).otherwise($"cust_id")).cache()
+
+val customers=spark.range(100,1000).withColumnRenamed("id","cust_id").withColumn("Name",lit("ccc")).cache
+spark.sql("SET spark.sql.autoBroadcastJoinThreshold = -1")
+customers.join(orders,Seq("cust_id"),"inner").show(false)

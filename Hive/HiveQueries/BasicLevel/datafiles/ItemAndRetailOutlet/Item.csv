@@ -1,0 +1,16 @@
+ITEMCODE,ITEMTYPE,DESCR,PRICE,REORDERLEVEL,QTYONHAND,CATEGORY
+I1001,FMCG,Britannia Marie Gold Cookies,20,100,1000,C
+I1002,FMCG,Best Rice,120,100,1000,C
+I1003,FMCG,Modern Bread,15,100,1000,C
+I1004,Apparels,Lee T-Shirt,300,100,1000,B
+I1005,Apparels,Levis T-Shirt,1700,100,1000,B
+I1006,Apparels,Satyapaul Sari,7300,100,1000,A
+I1007,Apparels,Allen Solly Tie,600,100,1000,C
+I1008,Computer,Xbox gamepad,1500,100,50,B
+I1009,Computer,Microsoft Mouse,700,120,50,C
+I1010,Computer,Intel C2D Processor,6500,50,25,A
+I1011,Computer,Intel Motherboard,5000,50,25,A
+I1012,Computer,500GB Hard disk,2500,150,50,B
+I1013,Computer,320GB Hard disk,1800,150,50,B
+I1014,FMCG,Aroma Bread,17,100,50,C
+I1015,Apparels,Arrow Jeans,7300,50,60,A

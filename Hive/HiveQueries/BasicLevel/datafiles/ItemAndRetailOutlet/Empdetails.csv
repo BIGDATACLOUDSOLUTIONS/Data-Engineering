@@ -1,0 +1,15 @@
+EMPID,EMPNAME,DESIGNATION,EMAILID,CONTACTNO,WORKSIN,SALARY
+1001,George,Administrator,george@easy.com,9045827834,R1001,6000
+1002,Kevin,Manager,kevin@easy.com,9045827834,R1001,6500
+1003,Lisa,Billing Staff,lisa@easy.com,9045827834,R1001,3000
+1004,Allen,Super Manager,allen@easy.com,9045827834,NULL,9000
+1005,Peter,Administrator,peter@easy.com,8923610836,R1002,6000
+1006,John,Manager,john@easy.com,7290470269,R1002,6500
+1007,Sam,Billing Staff,sam@easy.com,8038106739,R1002,3000
+1008,Megan,Manager,megan5@easy.com,9481089403,R1002,5000
+1009,Henry,Billing Staff,henry@easy.com,7820179403,R1002,5000
+1010,Cris,Billing Staff,cris@easy.com,9286720849,R1001,2800
+1011,Donald,Billing Staff,donald@easy.com,7490729739,R1001,2900
+1012,Edwin,Billing Staff,edwin@easy.com,9820984728,R1002,2500
+1013,Clara,Security,clara@easy.com,9387109378,R1001,2000
+1014,Michael,Security,michael@easy.com,9387109378,R1002,2000

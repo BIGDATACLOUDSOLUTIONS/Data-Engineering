@@ -1,0 +1,11 @@
+CUSTID,CUSTTYPE,CUSTNAME,GENDER,SPOUSE,EMAILID,ADDRESS
+2001,Regular,John,M,2004,john@easy.com,"Allen Street, New York"
+2002,Regular,Jason,M,2005,jason@adgm.in,"Richmond Parkway, California"
+2003,Privileged,Sam,M,NULL,sam@xyz.corp,"Ann Street, New York"
+2004,Privileged,Susan,F,2001,susan@adgm.in,"Allen Street, New York"
+2005,Privileged,Nancy,F,2002,nancy@xyz.corp,"East Fork Road, California"
+2006,Regular,Rachel,F,2007,rachel1@easy.com,"Charles Street, New York"
+2007,Regular,Dexter,M,2006,dexter2@easy.com,"Beak Street, New York"
+2008,Regular,Thomas,M,2009,thomas3@easy.com,"Sand Hill Road, California"
+2009,Regular,Christina,F,2008,christina4@easy.com,"Sand Hill Road, California"
+2010,Regular,Megan,F,NULL,megan5@easy.com,"Richmond Parkway, California"

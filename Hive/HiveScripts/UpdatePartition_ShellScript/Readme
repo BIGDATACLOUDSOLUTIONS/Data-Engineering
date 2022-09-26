@@ -1,0 +1,45 @@
+Problem Statement:
+---------------------------
+We have a partitioned table 'base_emp', partitioned on one column called dept.
+We get data on daily basis for different department. The requirement is as below:
+While inserting the new records to base_emp table, 
+1. if the partition is already there for any dept in new records then the older partition should be overwritten
+2. If any new dept is present in new records, then corresponding partition should be created
+3. If some partition for any dept is already there in base_emp table and there is no records for the same dept in new records, 
+then that partition should remain untouched.
+-----------------------------------------------------------------------------------------------------------------------------------
+Data Preparation:
+
+create database if not exists sample;
+use sample;
+
+create table temp_emp(id Int, first_name String,last_name String, dept String)
+row format delimited
+fields terminated by ','
+stored as textFile;
+
+LOAD DATA LOCAL INPATH '/home/cloudera/Desktop/UpdateDynamicPartitions/employee1.csv' OVERWRITE INTO TABLE temp_emp;
+
+LOAD DATA LOCAL INPATH '/home/cloudera/Desktop/UpdateDynamicPartitions/employee2.csv' OVERWRITE INTO TABLE temp_emp;
+
+---------------------------------------------------------------------------
+set hive.exec.dynamic.partition=true;
+set hive.exec.dynamic.partition.mode=nonstrict;
+
+----------------------------------------------------------------------
+
+create table base_emp(id Int, first_name String,last_name String)
+partitioned by (dept String)
+row format delimited
+fields terminated by ','
+stored as textFile;
+
+
+--First Time data Insertion
+insert overwrite table base_emp partition(dept) select * from temp_emp;
+
+Method1:
+Use the same command: insert overwrite table base_emp partition(dept) select * from temp_emp;
+
+Method2:
+Use Shell Script

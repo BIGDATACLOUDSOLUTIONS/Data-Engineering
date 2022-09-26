@@ -1,0 +1,102 @@
+# retail_db
+
+This contains data sets which are copied from Cloudera Quick Start VM.
+
+Here are the instructions to setup this repository.
+
+* Folder contains 6 sub folders
+  * customers
+  * departments
+  * categories
+  * products
+  * orders
+  * order_items
+* Files are of type text file. Records are delimited by new line character and fields with in each record are delimited by comma.
+
+```title
+mysql> show tables;
++---------------------+
+| Tables_in_retail_db |
++---------------------+
+| categories          |
+| customers           |
+| departments         |
+| order_items         |
+| orders              |
+| products            |
++---------------------+
+6 rows in set (0.00 sec)
+
+mysql> describe categories;
++------------------------+-------------+------+-----+---------+----------------+
+| Field                  | Type        | Null | Key | Default | Extra          |
++------------------------+-------------+------+-----+---------+----------------+
+| category_id            | int(11)     | NO   | PRI | NULL    | auto_increment |
+| category_department_id | int(11)     | NO   |     | NULL    |                |
+| category_name          | varchar(45) | NO   |     | NULL    |                |
++------------------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.01 sec)
+
+mysql> describe customers;
++-------------------+--------------+------+-----+---------+----------------+
+| Field             | Type         | Null | Key | Default | Extra          |
++-------------------+--------------+------+-----+---------+----------------+
+| customer_id       | int(11)      | NO   | PRI | NULL    | auto_increment |
+| customer_fname    | varchar(45)  | NO   |     | NULL    |                |
+| customer_lname    | varchar(45)  | NO   |     | NULL    |                |
+| customer_email    | varchar(45)  | NO   |     | NULL    |                |
+| customer_password | varchar(45)  | NO   |     | NULL    |                |
+| customer_street   | varchar(255) | NO   |     | NULL    |                |
+| customer_city     | varchar(45)  | NO   |     | NULL    |                |
+| customer_state    | varchar(45)  | NO   |     | NULL    |                |
+| customer_zipcode  | varchar(45)  | NO   |     | NULL    |                |
++-------------------+--------------+------+-----+---------+----------------+
+9 rows in set (0.00 sec)
+
+mysql> describe departments;
++-----------------+-------------+------+-----+---------+----------------+
+| Field           | Type        | Null | Key | Default | Extra          |
++-----------------+-------------+------+-----+---------+----------------+
+| department_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| department_name | varchar(45) | NO   |     | NULL    |                |
++-----------------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> describe order_items;
++--------------------------+------------+------+-----+---------+----------------+
+| Field                    | Type       | Null | Key | Default | Extra          |
++--------------------------+------------+------+-----+---------+----------------+
+| order_item_id            | int(11)    | NO   | PRI | NULL    | auto_increment |
+| order_item_order_id      | int(11)    | NO   |     | NULL    |                |
+| order_item_product_id    | int(11)    | NO   |     | NULL    |                |
+| order_item_quantity      | tinyint(4) | NO   |     | NULL    |                |
+| order_item_subtotal      | float      | NO   |     | NULL    |                |
+| order_item_product_price | float      | NO   |     | NULL    |                |
++--------------------------+------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> describe orders;
++-------------------+-------------+------+-----+---------+----------------+
+| Field             | Type        | Null | Key | Default | Extra          |
++-------------------+-------------+------+-----+---------+----------------+
+| order_id          | int(11)     | NO   | PRI | NULL    | auto_increment |
+| order_date        | datetime    | NO   |     | NULL    |                |
+| order_customer_id | int(11)     | NO   |     | NULL    |                |
+| order_status      | varchar(45) | NO   |     | NULL    |                |
++-------------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> describe products;
++---------------------+--------------+------+-----+---------+----------------+
+| Field               | Type         | Null | Key | Default | Extra          |
++---------------------+--------------+------+-----+---------+----------------+
+| product_id          | int(11)      | NO   | PRI | NULL    | auto_increment |
+| product_category_id | int(11)      | NO   |     | NULL    |                |
+| product_name        | varchar(45)  | NO   |     | NULL    |                |
+| product_description | varchar(255) | NO   |     | NULL    |                |
+| product_price       | float        | NO   |     | NULL    |                |
+| product_image       | varchar(255) | NO   |     | NULL    |                |
++---------------------+--------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+```

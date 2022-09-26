@@ -1,0 +1,1 @@
+cala -cp '/home/maria_dev/external_jars/scala-library-2.11.12.jar:/home/maria_dev/external_jars/slf4j-api-1.7.15.jar:/home/maria_dev/external_jars/spray-json_2.11-1.3.5.jar:/home/maria_dev/external_jars/mysql-connector.jar:/home/maria_dev/applications/SCALA_API_CONN_MYSQL_HIVE/scalaapiformysql_2.11-0.1.jar' MySqlJDBCClient

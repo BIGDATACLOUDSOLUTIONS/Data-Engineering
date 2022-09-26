@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sample.pom</groupId>  
+    <artifactId>download-jars</artifactId>
+    <name>Download Jars</name>  
+    <version>1.0</version>  
+    <packaging>jar</packaging>
+
+    <properties>
+        <hdp.version>2.6.5</hdp.version>
+        <java.version>1.8</java.version>
+        <junit.version>4.4</junit.version>
+        <scala.major.version>2.12</scala.major.version>
+        <scala.version>${scala.major.version}.11</scala.version>
+        <spark.version>3.0.2</spark.version>
+        <hadoop.version>2.10.1</hadoop.version>
+        <hive.version>1.2.1</hive.version>
+        <hbase.version>1.4.13</hbase.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-core_${scala.major.version}</artifactId>
+                <version>${spark.version}</version>
+                <scope>provided</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.xerial.snappy</groupId>
+                        <artifactId>snappy-java</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-sql_${scala.major.version}</artifactId>
+                <version>${spark.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-hive_${scala.major.version}</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.typesafe</groupId>
+                <artifactId>config</artifactId>
+                <version>1.4.1</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-common</artifactId>
+                <version>${hadoop.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-library</artifactId>
+                <version>${scala.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-reflect</artifactId>
+                <version>${scala.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.scalatest</groupId>
+                <artifactId>scalatest_${scala.major.version}</artifactId>
+                <version>3.2.9</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.circe</groupId>
+                <artifactId>circe-generic_${scala.major.version}</artifactId>
+                <version>0.13.0</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.circe/circe-core -->
+            <dependency>
+                <groupId>io.circe</groupId>
+                <artifactId>circe-core_${scala.major.version}</artifactId>
+                <version>0.13.0</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.circe/circe-parser -->
+            <dependency>
+                <groupId>io.circe</groupId>
+                <artifactId>circe-parser_${scala.major.version}</artifactId>
+                <version>0.13.0</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.circe/circe-generic-extras -->
+            <dependency>
+                <groupId>io.circe</groupId>
+                <artifactId>circe-generic-extras_${scala.major.version}</artifactId>
+                <version>0.13.0</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+  
+      <build>
+        <sourceDirectory>src/main/scala</sourceDirectory>
+        <testSourceDirectory>src/test/scala</testSourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>4.5.4</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <scalaVersion>${scala.version}</scalaVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>

@@ -1,0 +1,14 @@
+QUOTATIONID,SNAME,ITEMCODE,QUOTEDPRICE,QDATE,QSTATUS
+Q1001,Giant Store,I1008,1500,15-Oct-14,Rejected
+Q1002,EBATs,I1008,1400,16-Oct-14,Closed
+Q1003,EBATs,I1010,6200,18-Oct-14,Accepted
+Q1004,Shop Zilla,I1010,6250,20-Oct-14,Rejected
+Q1005,Giant Store,I1009,850,25-Nov-14,Rejected
+Q1006,VV Electronics,I1009,800,25-Nov-14,Closed
+Q1007,Shop Zilla,I1012,2200,15-Jan-15,Rejected
+Q1008,Shop Zilla,I1012,2150,15-Jan-15,Accepted
+Q1009,Shop Zilla,I1005,1480,15-Jun-15,Accepted
+Q1010,Giant Store,I1005,1490,15-Jun-15,Rejected
+Q1011,EBATs,I1002,120,16-Jun-15,Rejected
+Q1012,VV Electronics,I1002,120,16-Jun-15,Rejected
+Q1013,Giant Store,I1012,2150,16-Jun-15,Accepted

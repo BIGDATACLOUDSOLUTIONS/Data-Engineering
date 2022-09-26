@@ -1,0 +1,131 @@
+sudo service hbase-master start
+sudo service hbase-regionserver start
+hbase shell
+
+
+
+1.) Create a Table
+
+Syntax- create 'TableName' , 'ColumnFamily1','ColumnFamily2',..'ColumnFamilyn'
+
+create 'emp', 'personal', 'professional'
+
+
+2.) List tables
+
+list
+
+
+3.) Insert Record
+
+Syntax- put 'TableName','RowId','ColumnFamily:ColumnName','Value'
+
+put 'emp','100','personal:name','Amit'
+put 'emp','100','personal:age','24'
+put 'emp','100','professional:empid','718577'
+put 'emp','100','professional:BU','Oracle'
+
+put 'emp','101','personal:name','Rajat'
+put 'emp','101','personal:age','25'
+put 'emp','101','personal:gender','Male'
+put 'emp','101','professional:empid','718254'
+put 'emp','101','professional:BU','Oracle'
+
+
+
+4.) Scan table -->(Similar to select * from ....)
+
+Syntax- scan 'TableName'
+
+scan 'emp'
+
+5.) Get specific Row (Similar to select xyz,.... from ....)
+
+Syntax - get 'TableName','RowId'
+get 'emp', '100'
+
+
+6.) Get specific Row with Specific Column
+Syntax- 
+        get 'TableName','RowId', {COLUMN => 'ColumnFamily:ColumnName'}
+
+        1. get 'emp','100',{COLUMN => 'personal:name'}
+        2. get 'emp','100'
+        3. get 'emp','100','personal'
+        4. get 'emp','100','personal:name'
+
+
+
+7.) Delete Command --> Delete a particular Column of particular column family of a particular key
+syntax: delete 'TableName','RowId', 'ColumnFamily:ColumnName', 'timestamp'
+        delete 'emp','100','personal:name'
+
+
+8.) Delete all command  --Delete a particular key
+syntax- deleteall 'TableName','RowId'
+        deleteall 'emp','100'
+
+9.) Update command
+Syntax -put 'TableName','RowId','ColumnFamily:ColumnName','new value'
+        put 'emp','100','personal:age','20'
+
+10.) Enable table
+Syntax - enable 'TableName'
+
+11.) Disable Table
+Syntax - disable 'TableName'
+
+12. ) Drop a table:
+Syntax - disable 'TableName' and then drop 'TableName'
+-- Directly we can't drop any Hbase table
+
+
+12.) Describe table
+Syntax - desc 'TableName'
+
+13.) Alter table 
+Example- Change the maximum limit of versions of a Column Family from 3 to 5
+
+alter 'TableName', NAME =>'ColumnFamily' , VERSIONS => 5
+alter 'emp',NAME =>'personal', VERSIONS =>5
+
+scan 'emp', COLUMN =>'personal:age', VERSIONS =>3
+
+
+14.) Delete a Column Family
+Syntax- alter 'TableName', 'delete' => 'ColumnFamily'
+        alter 'emp','delete' => 'personal'
+
+15. ) To add a new column family:
+Syntax- alter 'TableName', {NAME => 'personal'} 
+
+15.) Count the rows in a table
+Syntax- count 'TableName'
+
+16.) Truncate Table
+Syntax- truncate 'TableName'
+
+
+CREATE A TABLE WITH SPECFIED VERSION:
+
+CREATE 'CUSTOMER' ,{NAME => 'ADDRESS' ,  VERSIONS =>3} 
+
+Versioing Related:
+
+Create 'Customer' {NAME =>'ADDRESS',VERSIONS =>3}
+
+count 'Customer'
+
+alter 'Customer' NAME=>'ADDRESS',VERSIONS =>5
+
+put 'Customer' , 'ADDRESS:city', 'Newyork'
+put 'Customer' , 'ADDRESS:city', 'Detroit'
+put 'Customer' , 'ADDRESS:city', 'Pune'
+
+scan 'Customer' ---> Pune
+
+scan 'Customer', {COLUMN => 'ADDRESS:city',VERSIONS => 2} -->Detroit
+scan 'Customer', {COLUMN => 'ADDRESS:city',VERSIONS => 1} 
+scan 'Customer', {COLUMN => 'ADDRESS:city',VERSIONS => 3}
+
+scan 'Customer', {VERSIONS => 2 }

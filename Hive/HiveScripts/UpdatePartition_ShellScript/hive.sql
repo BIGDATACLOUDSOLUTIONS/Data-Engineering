@@ -1,0 +1,1 @@
+insert overwrite table ${hiveconf:DB_NAME}.${hiveconf:BASE_TABLE} partition  (${hiveconf:PARTITION_COL} = '${hiveconf:PARTITION_VALUE}') select id, first_name ,last_name from ${hiveconf:DB_NAME}.${hiveconf:STAGING_TAB} where ${hiveconf:PARTITION_COL}='${hiveconf:PARTITION_VALUE}';

@@ -1,0 +1,20 @@
+HBASE Architecture:
+https://www.edureka.co/blog/hbase-tutorial
+https://www.edureka.co/blog/hbase-architecture/
+https://www.guru99.com/hbase-architecture-data-flow-usecases.html
+https://blog.cloudera.com/blog/2012/06/hbase-write-path/
+
+Extra:
+https://stackoverflow.com/questions/40067933/hbase-whats-the-difference-between-wal-and-memstore
+https://community.hortonworks.com/questions/18205/how-wal-help-in-recovering-region-server-failure.html
+https://hortonworks.com/blog/apache-hbase-region-splitting-and-merging/
+
+HBASE Shell Commands:
+
+
+   Interact with HBase Using Java API:
+      Part 1: https://www.youtube.com/watch?v=KQMCOgVdsiw
+      Part 2:
+      Part 3:
+   HBASE Filter Commands:
+    Acadgild:
