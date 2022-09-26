@@ -1,0 +1,6 @@
+columnName,DataType,columnType,columnDescription
+customer_id,int,Primary,Customer ID
+first_name,string,Not Null,First NAME
+last_name,string,Optional,Last NAME
+email,string,Optional,Email EMAIL
+gender,string,Not Null,Gender GENDER
