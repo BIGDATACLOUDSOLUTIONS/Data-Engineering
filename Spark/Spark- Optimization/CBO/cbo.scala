@@ -1,4 +1,5 @@
-Source: 
+/**
+Source:
 YouTube: https://www.youtube.com/watch?v=Xam-a7GD9JM
 YouTube Spark-Summit: https://www.youtube.com/watch?v=qS_aS99TjCM
 Databricks: https://databricks.com/blog/2017/08/31/cost-based-optimizer-in-apache-spark-2-2.html
@@ -6,6 +7,7 @@ Databricks: https://databricks.com/blog/2017/08/31/cost-based-optimizer-in-apach
 Start your spark shell on yarn because few feature won't work on local mode
 
 spark2-shell --master yarn --deploy-mode client --driver-memory 2G
+**/
 
 spark.range(10000000).write.saveAsTable("rajeshkr.huge")
 spark.range(10000000).withColumn("twice",col("id") *2).write.saveAsTable("rajeshkr.twice")
